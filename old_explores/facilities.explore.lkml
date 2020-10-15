@@ -1,4 +1,4 @@
-include: "../views/*.view"
+include: "../old_views/*.view"
 
 explore: facilities {
   view_label: "Facilities"
@@ -7,7 +7,7 @@ explore: facilities {
 
   join: campsites {
     type: left_outer
-    view_label: "Sites"
+    view_label: "Camp sites"
     sql_on: ${facilities.facilityid} = ${campsites.facilityid} ;;
     relationship: many_to_one
   }
@@ -37,6 +37,13 @@ explore: facilities {
     type: left_outer
     view_label: "Tours"
     sql_on: ${facilities.facilityid} = ${tours.facilityid} ;;
+    relationship: many_to_one
+  }
+
+  join: permitted_equipment {
+    type: left_outer
+    view_label: "Camp sites"
+    sql_on: ${permitted_equipment.campsiteid} = ${campsites.campsiteid} ;;
     relationship: many_to_one
   }
 
