@@ -14,7 +14,7 @@ explore: facilities {
 
   join: facility_addresses {
     type: left_outer
-    view_label: "addresses"
+    view_label: "Locations"
     sql_on: ${facilities.facilityid} = ${facility_addresses.facilityid} ;;
     relationship: many_to_one
   }

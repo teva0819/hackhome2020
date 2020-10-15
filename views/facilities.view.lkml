@@ -30,24 +30,29 @@ view: facilities {
   }
 
   dimension: facilitylatitude {
+    view_label: "Locations"
+    hidden: yes
     type: number
     sql: ${TABLE}.FACILITYLATITUDE ;;
   }
 
   dimension: facilitylongitude {
+    view_label: "Locations"
+    hidden: yes
     type: number
     sql: ${TABLE}.FACILITYLONGITUDE ;;
   }
 
   dimension: location {
-    group_label: "Location"
-    label: "World Point Location"
+    view_label: "Locations"
+    label: "Map Point Location"
     type: location
     sql_latitude: ${facilitylatitude} ;;
     sql_longitude: ${facilitylongitude} ;;
   }
 
   dimension: facilitymapurl {
+    view_label: "Locations"
     type: string
     sql: ${TABLE}.FACILITYMAPURL ;;
   }
