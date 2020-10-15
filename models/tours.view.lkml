@@ -68,6 +68,11 @@ view: tours {
     sql: ${TABLE}.TOURTYPE ;;
   }
 
+  measure: unique_ids {
+    type: count_distinct
+    sql: ${tourid} ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [tourid, tourname, member_tours.count]
