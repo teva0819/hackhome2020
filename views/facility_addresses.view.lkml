@@ -28,6 +28,7 @@ view: facility_addresses {
   }
 
   dimension: facilityid {
+    hidden: yes
     type: string
     sql: ${TABLE}.FACILITYID ;;
   }

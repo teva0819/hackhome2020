@@ -39,6 +39,7 @@ view: campsites {
   }
 
   dimension: facilityid {
+    hidden: yes
     type: number
     value_format_name: id
     sql: ${TABLE}.FACILITYID ;;

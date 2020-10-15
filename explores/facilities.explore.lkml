@@ -26,12 +26,12 @@ explore: facilities {
     relationship: many_to_one
   }
 
-  join: rec_area_facilities {
-    type: left_outer
-    view_label: "Rec Area"
-    sql_on: ${facilities.facilityid} = ${rec_area_facilities.facilityid} ;;
-    relationship: many_to_one
-  }
+#  join: rec_area_facilities {
+#     type: left_outer
+#     view_label: "Rec Area"
+#     sql_on: ${facilities.facilityid} = ${rec_area_facilities.facilityid} ;;
+#     relationship: many_to_one
+#   }
 
   join: tours {
     type: left_outer

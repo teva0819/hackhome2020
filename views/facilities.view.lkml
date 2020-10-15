@@ -45,7 +45,7 @@ view: facilities {
 
   dimension: location {
     view_label: "Locations"
-    label: "Map Point Location"
+    label: "Facilities Map Point Location"
     type: location
     sql_latitude: ${facilitylatitude} ;;
     sql_longitude: ${facilitylongitude} ;;

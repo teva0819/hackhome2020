@@ -22,6 +22,7 @@ view: permit_entrances {
   }
 
   dimension: facilityid {
+    hidden: yes
     type: number
     value_format_name: id
     sql: ${TABLE}.FACILITYID ;;
@@ -42,13 +43,23 @@ view: permit_entrances {
   }
 
   dimension: latitude {
+    hidden: yes
     type: number
     sql: ${TABLE}.LATITUDE ;;
   }
 
   dimension: longitude {
+    hidden: yes
     type: number
     sql: ${TABLE}.LONGITUDE ;;
+  }
+
+  dimension: location {
+    view_label: "Locations"
+    label: "Entrances Map Point Location"
+    type: location
+    sql_latitude: ${latitude} ;;
+    sql_longitude: ${longitude} ;;
   }
 
   dimension: permitentranceaccessible {
