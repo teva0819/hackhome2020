@@ -1,7 +1,7 @@
 connection: "lookerdata"
 
 # include all the views
-include: "**/*.view"
+include: "../views/*.view"
 
 datagroup: national_parks_overview_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
