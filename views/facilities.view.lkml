@@ -39,6 +39,14 @@ view: facilities {
     sql: ${TABLE}.FACILITYLONGITUDE ;;
   }
 
+  dimension: location {
+    group_label: "Location"
+    label: "World Point Location"
+    type: location
+    sql_latitude: ${facilitylatitude} ;;
+    sql_longitude: ${facilitylongitude} ;;
+  }
+
   dimension: facilitymapurl {
     type: string
     sql: ${TABLE}.FACILITYMAPURL ;;
