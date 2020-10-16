@@ -1,9 +1,9 @@
 view: benfords_law {
   derived_table: {
     sql: select s.*, r.predicted_frequency  from
-      (select
-        cast(substring(cast(IFNULL(cast(regexp_extract(OtherPay, r'^[0-9]*(?:\.[0-9]*)?$') as float64), 0) as string),1,1) as int64) as first_digit
-      , count(cast(substring(cast(IFNULL(cast(regexp_extract(OtherPay, r'^[0-9]*(?:\.[0-9]*)?$') as float64), 0) as string),1,1) as int64))*100/ (Select Count(*) From sfsalary.salaries) as real_frequency
+      (select id
+      , cast(substring(cast(IFNULL(cast(regexp_extract(OtherPay, r'^[0-9]*(?:\.[0-9]*)?$') as float64), 0) as string),1,1) as int64) as first_digit
+      , count(cast(substring(cast(IFNULL(cast(regexp_extract(OtherPay, r'^[0-9]*(?:\.[0-9]*)?$') as float64), 0) as string),1,1) as int64))/ (Select Count(*) From sfsalary.salaries) as real_frequency
       from sfsalary.salaries
       group by first_digit
       ) s
