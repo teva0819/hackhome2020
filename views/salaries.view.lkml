@@ -80,18 +80,72 @@ view: salaries {
 
   dimension: year {
     label: "Year"
-    type: number
-    sql: (${TABLE}.Year AS INT64);;
+    type: string
+    sql: ${TABLE}.Year;;
   }
 
-  measure: count {
-    type: count
-    drill_fields: [id, employee_name]
-  }
+  # measure: count {
+  #   type: count
+  #   drill_fields: [id, employee_name]
+  # }
 
   dimension: first_digit_base_pay {
     hidden: yes
     type: number
     sql:  to_number(substring(to_string(${salaries.base_pay}),1,1));;
+  }
+
+  measure: maximum_base_salary {
+    label: "Maximum Base Payment Amount"
+    type: max
+    sql: ${base_pay};;
+  }
+
+  measure: minimum_base_salary {
+    label: "Minimum Base Payment Amount"
+    type: number
+    sql: min(${base_pay});;
+  }
+
+  measure: average_base_salary {
+    label: "Average Base Payment Amount"
+    type: average
+    sql: ${base_pay};;
+  }
+
+  measure: maximum_benefits {
+    label: "Maximum Benefits Amount"
+    type: max
+    sql: ${benefits};;
+  }
+
+  measure: minimum_benefits {
+    label: "Minimum Benefits Amount"
+    type: number
+    sql: min(${benefits});;
+  }
+
+  measure: average_benefits {
+    label: "Average Benefits Amount"
+    type: average
+    sql: ${benefits};;
+  }
+
+  measure: maximum_overtime_pay {
+    label: "Maximum Overtime Payments"
+    type: max
+    sql: ${overtime_pay};;
+  }
+
+  measure: minimum_overtime_pay {
+    label: "Minimum Overtime Payments"
+    type: number
+    sql: min(${overtime_pay});;
+  }
+
+  measure: average_overtime_pay {
+    label: "Average Overtime Payments"
+    type: average
+    sql: ${overtime_pay};;
   }
 }
