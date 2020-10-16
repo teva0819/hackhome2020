@@ -29,8 +29,8 @@ view: facility_addresses {
 
   dimension: facilityid {
     hidden: yes
-    type: number
-    sql: ${TABLE}.FACILITYID ;;
+    type: string
+    sql: cast(${TABLE}.FACILITYID as string) ;;
   }
 
   dimension: facilitystreetaddress1 {

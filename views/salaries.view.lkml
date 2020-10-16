@@ -11,12 +11,12 @@ view: salaries {
 
   dimension: agency {
     type: string
-    label: "Agengy"
+    label: "Agency"
     sql: ${TABLE}.Agency ;;
   }
 
   dimension: base_pay {
-    label: "Base payment amount"
+    label: "Base Payment Amount"
     type: number
     sql:IFNULL(cast(regexp_extract(${TABLE}.BasePay, r'^[0-9]*(?:\.[0-9]*)?$') as float64), 0);;
   }
@@ -87,5 +87,11 @@ view: salaries {
   measure: count {
     type: count
     drill_fields: [id, employee_name]
+  }
+
+  dimension: first_digit_base_pay {
+    hidden: yes
+    type: number
+    sql:  to_number(substring(to_string(${salaries.base_pay}),1,1));;
   }
 }

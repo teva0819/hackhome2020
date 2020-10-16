@@ -5,8 +5,8 @@ view: facilities {
 
   dimension: facilityid {
     primary_key: yes
-    type: number
-    sql: ${TABLE}.FACILITYID ;;
+    type: string
+    sql: cast(${TABLE}.FACILITYID as string) ;;
   }
 
   dimension: facilityadaaccess {
