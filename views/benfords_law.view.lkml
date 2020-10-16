@@ -1,14 +1,14 @@
 view: benfords_law {
   derived_table: {
     sql: select s.*, r.predicted_frequency  from
-      (select id
-      , cast(substring(cast(IFNULL(cast(regexp_extract(OtherPay, r'^[0-9]*(?:\.[0-9]*)?$') as float64), 0) as string),1,1) as int64) as first_digit
+      (select
+       cast(substring(cast(IFNULL(cast(regexp_extract(OtherPay, r'^[0-9]*(?:\.[0-9]*)?$') as float64), 0) as string),1,1) as int64) as first_digit
       , count(cast(substring(cast(IFNULL(cast(regexp_extract(OtherPay, r'^[0-9]*(?:\.[0-9]*)?$') as float64), 0) as string),1,1) as int64))/ (Select Count(*) From sfsalary.salaries) as real_frequency
       from sfsalary.salaries
-      group by first_digit, id
+      group by first_digit
       ) s
       inner join (select  digits,
-          log(1+(1/digits))/log(10)*100 as predicted_frequency
+          log(1+(1/digits))/log(10) as predicted_frequency
           from UNNEST(GENERATE_ARRAY(1, 9)) as digits) r
         on r.digits=s.first_digit
        ;;
@@ -34,13 +34,6 @@ view: benfords_law {
     label: "Predicted Frequency, %"
     type: number
     sql: round(${TABLE}.predicted_frequency,2) ;;
-  }
-
-  dimension: id {
-    primary_key: yes
-    hidden: yes
-    type: number
-    sql: ${TABLE}.Id ;;
   }
 
   set: detail {
