@@ -14,45 +14,20 @@ view: benfords_law {
        ;;
   }
 
-  dimension: real_frequency {
-    label: "Real Frequency, %"
-    type: number
-    sql: round(${TABLE}.real_frequency,2) ;;
-  }
-
   measure: count {
     type: count
     drill_fields: [detail*]
   }
 
-  dimension: id {
-    primary_key: yes
-    hidden: yes
-    type: number
-    sql: ${TABLE}.Id ;;
-  }
-
-  dimension: job_title {
-    label: "Job Title"
-    type: string
-    sql: ${TABLE}.JobTitle ;;
-  }
-
-  dimension: other_pay {
-    label: "Additional Payments"
-    type: number
-    sql:CAST(REPLACE(${TABLE}.OtherPay, 'Not Provided', '0') AS FLOAT64);;
-  }
-
-  dimension: year {
-    label: "Year"
-    type: number
-    sql: (${TABLE}.Year AS INT64);;
-  }
-
   dimension: first_digit {
     type: number
     sql: ${TABLE}.first_digit ;;
+  }
+
+  dimension: real_frequency {
+    label: "Real Frequency, %"
+    type: number
+    sql: round(${TABLE}.real_frequency,2) ;;
   }
 
   dimension: predicted_frequency {
@@ -62,13 +37,6 @@ view: benfords_law {
   }
 
   set: detail {
-    fields: [
-      id,
-      job_title,
-      other_pay,
-      year,
-      first_digit,
-      predicted_frequency
-    ]
+    fields: [first_digit, real_frequency, predicted_frequency]
   }
 }
