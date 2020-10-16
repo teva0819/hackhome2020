@@ -5,7 +5,7 @@ view: benfords_law {
       , cast(substring(cast(IFNULL(cast(regexp_extract(OtherPay, r'^[0-9]*(?:\.[0-9]*)?$') as float64), 0) as string),1,1) as int64) as first_digit
       , count(cast(substring(cast(IFNULL(cast(regexp_extract(OtherPay, r'^[0-9]*(?:\.[0-9]*)?$') as float64), 0) as string),1,1) as int64))/ (Select Count(*) From sfsalary.salaries) as real_frequency
       from sfsalary.salaries
-      group by first_digit
+      group by first_digit, id
       ) s
       inner join (select  digits,
           log(1+(1/digits))/log(10)*100 as predicted_frequency
