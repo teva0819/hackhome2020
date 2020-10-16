@@ -30,13 +30,13 @@ view: salaries {
   dimension: employee_name {
     label: "Employee Name"
     type: string
-    sql: initcap(${TABLE}.EmployeeName) ;;
+    sql: ${TABLE}.EmployeeName;;
   }
 
   dimension: job_title {
     label: "Job Title"
     type: string
-    sql: ${TABLE}.JobTitle ;;
+    sql: initcap(${TABLE}.JobTitle) ;;
   }
 
   dimension: notes {
