@@ -1,2 +1,2 @@
 connection: "lookerdata"
-include: "../sf_explores/*.explore"
+include: "../explores/*.explore"

@@ -1,4 +1,4 @@
-include: "../sf_views/*.view"
+include: "../views/*.view"
 explore: salaries {
   view_name: salaries
   view_label: "San Francisco Salaries"
