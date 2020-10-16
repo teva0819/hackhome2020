@@ -36,6 +36,13 @@ view: benfords_law {
     sql: round(${TABLE}.predicted_frequency,2) ;;
   }
 
+  dimension: id {
+    primary_key: yes
+    hidden: yes
+    type: number
+    sql: ${TABLE}.Id ;;
+  }
+
   set: detail {
     fields: [first_digit, real_frequency, predicted_frequency]
   }
